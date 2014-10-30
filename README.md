@@ -3,8 +3,8 @@ Notes on Genetic Algorithms
 ## Contents
 - [Introduction](#introduction)
 - [Biological Background](#biological-background)
-- [How it Works]
-	-[PseudoCode]
+- [How it Works](#how-it-works)
+	-[PseudoCode](#pseudocode)
 - Motivation / Advantages
 - [Applications](#applications)
 - Key Terms and Jargon
@@ -41,19 +41,26 @@ Complete set of genetic material (all chromosomes) is called _genome_. Particula
 ![Flowchart for Basic Process](/images/genetic_flowchart_process.png "Flowchart for Basic Process")
 
 The basic process for a genetic algorithm is:
+
 1. Initialization - Create an initial population. This population is usually randomly generated and can be any desired size, from only a few individuals to thousands.
+
 2. Evaluation - Each member of the population is then evaluated and we calculate a 'fitness' for that individual. The fitness value is calculated by how well it fits with our desired requirements. These requirements could be simple, 'faster algorithms are better', or more complex, 'faster algorithms should have high accuracy and easy to implement'
+
 3. Selection - We want to be constantly improving our populations overall fitness. Selection helps us to do this by discarding the bad designs and only keeping the best individuals in the population.  There are a few different selection methods but the basic idea is the same, make it more likely that fitter individuals will be selected for our next generation.
+
 4. Crossover - During crossover we create new individuals by combining aspects of our selected individuals. We can think of this as mimicking how sex works in nature. The hope is that by combining certain traits from two or more individuals we will create an even 'fitter' offspring which will inherit the best traits from each of it's parents.
+
 5. Mutation - We need to add a little bit randomness into our populations' genetics otherwise every combination of solutions we can create would be in our initial population. Mutation typically works by making very small changes at random to an individuals genome.
-6. ** And repeat! ** - Now we have our next generation we can start again from step two until we reach a termination condition.
+
+6. * And repeat! * - Now we have our next generation we can start again from step two until we reach a termination condition.
 
 _Termination Condition_
+
 The termination condition decides when the algorithms stop running. The most likely reason is that your algorithm has found a solution which is good enough and meets a predefined minimum criteria. Other reasons for terminating could be constraints such as computational time.
 
 ### PSEUDOCODE
 Algorithm GA is
-
+```
 // start with an initial time
 t := 0;
 
@@ -85,6 +92,7 @@ do while not done
 
 endwhile
 end GA.
+```
 
 ## Motivation / Advantages
 
@@ -96,6 +104,5 @@ end GA.
 2. [Tutorial on Genetic Algorithms, ibug, UK](http://ibug.doc.ic.ac.uk/media/uploads/documents/courses/GeneticAlgorithm-tutorial.pdf)
 3. [Creating a genetic algorithm for beginners, TheProjectSpot](http://www.theprojectspot.com/tutorial-post/creating-a-genetic-algorithm-for-beginners/3)
 4. [What's a Genetic Algorithm (GA)?, CMU](http://www.cs.cmu.edu/Groups/AI/html/faqs/ai/genetic/part2/faq-doc-2.html)
-5. [](http://www.doc.ic.ac.uk/~nd/surprise_96/journal/vol1/tcw2/article1.html)
-6. [Index of Most Important Applications of the Genetic Algorithms, Nov 97](http://neo.lcc.uma.es/TutorialEA/semEC/cap03/cap_3.html)
-7. []()
+5. [Introductory Article of Genetic Algorithm and its Applications, Imperial College, London](http://www.doc.ic.ac.uk/~nd/surprise_96/journal/vol1/tcw2/article1.html)
+6. [Index of Most Important Applications of the Genetic Algorithms, Univeristy of Malaga, Nov 97](http://neo.lcc.uma.es/TutorialEA/semEC/cap03/cap_3.html)
