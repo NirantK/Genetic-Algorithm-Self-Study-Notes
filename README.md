@@ -1,5 +1,9 @@
-Notes on Genetic Algorithms
+Genetic Algorithms
 =======================
+##### Self Study Notes made as a part of a larger project to 
+	Classify Satellite Images on basis of land use pattern
+###### Compiled by [Nirant Kasliwal](nirantk.in)
+---------------
 ## Contents
 - [Introduction](#introduction)
 - [Biological Background](#biological-background)
@@ -7,48 +11,19 @@ Notes on Genetic Algorithms
 	- [PseudoCode](#pseudocode)
 - [Motivation / Advantages](#motivation-advantages)
 - [Applications](#applications)
-- [Key Ideas](#key-ideas)
+- [Concepts](#concepts)
 	- [Crossing Over](#crossing-over)
 	  - [Methods of selection of Chromosomes](#methods-of-selection-of-chromosomes)
-	- Mutation
-	- Fitness Criteria
+	- [Mutation](#mutation)
+	- [Fitness Function](#fitness function)
+	- [Selection](#selection)
+		- [Roulette-Wheel Selection](#roulette-wheel-selection)
+		- [Stochastic Universal Sampling](#stochastic-universal-sampling)
 	- Termination Evaluation Criteria
 - Comparative Study [To be Added Later]
   - k Nearest Neighbour
   - Maximum Likelihood Estimation
 - [Bibliography](#bibliography)
-
-## Key Ideas
-### Crossing Over
-
-In genetic algorithms, crossover is a genetic operator used to vary the programming of a chromosome or chromosomes from one generation to the next. It is analogous to reproduction and biological crossover, upon which genetic algorithms are based. Cross over is a process of taking more than one parent solutions and producing a child solution from them.
-
-#### One-point crossover
-A single crossover point on both parents' organism strings is selected. All data beyond that point in either organism string is swapped between the two parent organisms. The resulting organisms are the children:
-
-
-#### Two-point crossover
-Two-point crossover calls for two points to be selected on the parent organism strings. Everything between the two points is swapped between the parent organisms, rendering two child organisms:
-
-
-#### Cut and splice
-Another crossover variant, the "cut and splice" approach, results in a change in length of the children strings. The reason for this difference is that each parent string has a separate choice of crossover point.
-
-#### Uniform Crossover and Half Uniform Crossover
-The Uniform Crossover uses a fixed mixing ratio between two parents. Unlike one- and two-point crossover, the Uniform Crossover enables the parent chromosomes to contribute the gene level rather than the segment level.
-
-If the mixing ratio is 0.5, the offspring has approximately half of the genes from first parent and the other half from second parent, although cross over points can be randomly chosen.
-
-#### Arithmetic crossover 
-Some arithmetic operation is performed to make a new offspring. This could include boolean operation such as logical AND, OR, XOR etc. or combinations thereof. 
-
-The Uniform Crossover evaluates each bit in the parent strings for exchange with a probability of 0.5. Empirical evidence suggest that it is a more exploratory approach to crossover than the traditional exploitative approach that maintains longer schemata. This results in a more complete search of the design space with maintaining the exchange of good information. Unfortunately, no satisfactory theory exists to explain the discrepancies between the Uniform Crossover and the traditional approaches. 
-
-In the uniform crossover scheme (UX) individual bits in the string are compared between two parents. The bits are swapped with a fixed probability, typically 0.5.
-
-In the half uniform crossover scheme (HUX), exactly half of the nonmatching bits are swapped. Thus first the Hamming distance (the number of differing bits) is calculated. This number is divided by two. The resulting number is how many of the bits that do not match between the two parents will be swapped.
-
-#### Methods of Selection of Chromosomes
 
 
 ## Introduction
@@ -146,6 +121,102 @@ end GA
 | Control | [Fluid pipeline](http://waset.org/publications/9997300/a-review-of-genetic-algorithm-optimization-operations-and-applications-to-water-pipeline-systems)  |
 | Robotics      | Trajectory Planning |
 
+## Concepts
+
+### Crossing Over
+
+In genetic algorithms, crossover is a genetic operator used to vary the programming of a chromosome or chromosomes from one generation to the next. It is analogous to reproduction and biological crossover, upon which genetic algorithms are based. Cross over is a process of taking more than one parent solutions and producing a child solution from them.
+
+#### One-point crossover
+![One-point crossover](/images/two-point.png "One-point crossover")
+A single crossover point on both parents' organism strings is selected. All data beyond that point in either organism string is swapped between the two parent organisms. The resulting organisms are the children:
+
+
+#### Two-point crossover
+![Two-point crossover](/images/two-point.png "Two-point crossover")
+
+Two-point crossover calls for two points to be selected on the parent organism strings. Everything between the two points is swapped between the parent organisms, rendering two child organisms:
+
+
+#### Cut and splice
+Another crossover variant, the "cut and splice" approach, results in a change in length of the children strings. The reason for this difference is that each parent string has a separate choice of crossover point.
+
+#### Uniform Crossover and Half Uniform Crossover
+![Uniform crossover](/images/uniform.png "Uniform Crossover")
+
+The Uniform Crossover uses a fixed mixing ratio between two parents. Unlike one- and two-point crossover, the Uniform Crossover enables the parent chromosomes to contribute the gene level rather than the segment level.
+
+If the mixing ratio is 0.5, the offspring has approximately half of the genes from first parent and the other half from second parent, although cross over points can be randomly chosen.
+
+The Uniform Crossover evaluates each bit in the parent strings for exchange with a probability of 0.5. Empirical evidence suggest that it is a more exploratory approach to crossover than the traditional exploitative approach that maintains longer schemata. This results in a more complete search of the design space with maintaining the exchange of good information. Unfortunately, no satisfactory theory exists to explain the discrepancies between the Uniform Crossover and the traditional approaches. 
+
+In the uniform crossover scheme (UX) individual bits in the string are compared between two parents. The bits are swapped with a fixed probability, typically 0.5.
+
+In the half uniform crossover scheme (HUX), exactly half of the nonmatching bits are swapped. Thus first the Hamming distance (the number of differing bits) is calculated. This number is divided by two. The resulting number is how many of the bits that do not match between the two parents will be swapped.
+
+#### Arithmetic crossover 
+![Arithmetic crossover](/images/arithmetic.png "Arithmetic crossover")
+
+Some arithmetic operation is performed to make a new offspring. This could include boolean operation such as logical AND, OR, XOR etc. or combinations thereof. 
+
+-------------------------------
+
+#### Methods of Selection of Chromosomes
+
+### Mutation
+
+Mutation is a genetic operator used to maintain genetic diversity from one generation of a population of genetic algorithm chromosomes to the next. It is analogous to biological mutation. 
+Mutation alters one or more gene values in a chromosome from its initial state. In mutation, the solution may change entirely from the previous solution. 
+Hence GA can come to better solution by using mutation. Mutation occurs during evolution according to a user-definable mutation probability. This probability should be set low. If it is set too high, the search will turn into a primitive random search.
+
+The purpose of mutation in GAs is preserving and introducing diversity. Mutation should allow the algorithm to avoid local minima by preventing the population of chromosomes from becoming too similar to each other, thus slowing or even stopping evolution.
+
+### Fitness Function
+The fitness function is the function you want to optimize. For standard optimization algorithms, this is known as the objective function.
+
+There is considerable effort involved in designing a workable fitness function. It is the human designer who has to design the fitness function. 
+If this is designed badly, the algorithm will either converge on an inappropriate solution, or will have difficulty converging at all.
+
+Moreover, the fitness function must not only correlate closely with the designer's goal, it must also be computed quickly. Speed of execution is very important, as a typical genetic algorithm must be iterated many times in order to produce a usable result for a non-trivial problem.
+
+### Selection
+Reproduction (or selection) is an operator that makes more copies of better strings in a new population. Reproduction is usually the first operator applied on a population. Reproduction selects good strings in a population and forms a mating pool. This is one of the reason for the reproduction operation to be sometimes known as the selection operator. Thus, in reproduction operation the process of natural selection cause those individuals that encode successful structures to produce copies more frequently. To sustain the generation of a new population, the reproduction of the individuals in the current population is necessary. For better individuals, these should be from the fittest individuals of the previous population. There exist a number of reproduction operators in GA literature, but the essential idea in all of them is that the above average strings are picked from the current population and their multiple copies are inserted in the mating pool in a probabilistic manner.
+
+#### Roulette-Wheel Selection
+The commonly-used reproduction operator is the proportionate reproduction operator where a string is selected for the mating pool with a probability proportional to its fitness. Thus, the ith string in the population is selected with a probability proportional to Fi. Since the population size is usually kept fixed in a simple GA, the sum of the probability of each string being selected for the mating pools must be one. 
+
+One way to implement this selection scheme is to imagine a roulette-wheel with it's circumference marked for each string proportionate to the string's fitness. The roulette-wheel is spun n times. each time selecting an instance of the string chosen by the roulette-wheel pointer. 
+The fitness function assigns a fitness to possible solutions or chromosomes. This fitness level is used to associate a probability of selection with each individual chromosome. If f_i is the fitness of individual i in the population, its probability of being selected is p_i = \frac{f_i}{\Sigma_{j=1}^{N} f_j}, where N is the number of individuals in the population.
+
+#### Stochastic Universal Sampling
+Stochastic universal sampling (SUS) is a technique used in genetic algorithms for selecting potentially useful solutions for recombination. 
+
+Where FPS chooses several solutions from the population by repeated random sampling, SUS uses a single random value to sample all of the solutions by choosing them at evenly spaced intervals. 
+
+This gives weaker members of the population (according to their fitness) a chance to be chosen and thus reduces the unfair nature of fitness-proportional selection methods.
+
+Other methods like roulette wheel can have bad performance when a member of the population has a really large fitness in comparison with other members. Using a comb-like ruler, SUS starts from a small random number, and chooses the next candidates from the rest of population remaining, not allowing the fittest members to saturate the candidate space.
+
+The pseudocode for the algorithm would be: 
+```
+SUS(Population, N)
+    F := total fitness of population
+    N := number of offspring to keep
+    P := distance between the pointers (F/N)
+    Start := random number between 0 and P
+    Pointers := [Start + i*P | i in [0..N-1]]
+    return RWS(Population,Pointers)
+
+RWS(Population, Points)
+    Keep = []
+    i := 0
+    for P in Points
+        while fitness sum of Population[1~i] < P
+            i++
+        add Population[i] to Keep
+    return Keep
+```
+Here RWS() describes the bulk of roulette wheel selection (also known as "fitness proportionate selection") - in true fitness proportional selection the parameter Points is always a (sorted) list of random numbers from 0 to F. The algorithm above is intended to be illustrative rather than canonical.
 
 ## Bibliography
 
@@ -155,4 +226,12 @@ end GA
 2. [Tutorial on Genetic Algorithms, ibug, UK](http://ibug.doc.ic.ac.uk/media/uploads/documents/courses/GeneticAlgorithm-tutorial.pdf)
 3. [Creating a genetic algorithm for beginners, TheProjectSpot](http://www.theprojectspot.com/tutorial-post/creating-a-genetic-algorithm-for-beginners/3)
 5. [Index of Most Important Applications of the Genetic Algorithms, Univeristy of Malaga, Nov 97](http://neo.lcc.uma.es/TutorialEA/semEC/cap03/cap_3.html)
-7.  [Slides on Drexel Univeristy](https://www.cs.drexel.edu/~spiros/teaching/SE320/slides/ga.pdf)
+7. [Slides on Drexel Univeristy (PDF)](https://www.cs.drexel.edu/~spiros/teaching/SE320/slides/ga.pdf)
+8. [Document with Applications of GA on rgu.ac.uk (PDF)](https://www4.rgu.ac.uk/files/chapter13%20-%20applications.pdf)
+9. [Fitness functions in evolutionary robotics: A survey and analysis (Adaptive Fuzzy Fitness Granulation) (PDF)](http://www.nelsonrobotics.org/paper_archive_nelson/nelson-jras-2009.pdf)
+10. [A Novel General Framework for Evolutionary Optimization(Adaptive Fuzzy Fitness Granulation) (PDF)](http://profsite.um.ac.ir/~davarynej/Resources/CEC'07-Draft.pdf)
+11. [JGAP - Genetic Algorithms and Genetic Programming component provided as a Java framework](http://jgap.sourceforge.net/index.html)
+12. [GA by Tom V. Mathew (PDF)](http://www.civil.iitb.ac.in/tvm/2701_dga/2701-ga-notes/gadoc.pdf)
+13. [Wikiwand](http://www.wikiwand.com/en/)
+14. Baker, James E. (1987). "Reducing Bias and Inefficiency in the Selection Algorithm". _Proceedings of the Second International Conference on Genetic Algorithms and their Application_ (Hillsdale, New Jersey: L. Erlbaum Associates): 14–21.
+15 [StackOverflow Question on RWS](http://stackoverflow.com/questions/177271/roulette-selection-in-genetic-algorithms)
