@@ -1,28 +1,26 @@
 Genetic Algorithms
 =======================
-##### Self Study Notes made as a part of a larger project to 
-	Classify Satellite Images on basis of land use pattern
-###### Compiled by [Nirant Kasliwal](nirantk.in)
----------------
+##### Self Study Notes 
+Made while learning to Classify Satellite Images on basis of land use pattern
+###### Compiled by [Nirant Kasliwal](nirantk.com)
+
+
 ## Contents
 - [Introduction](#introduction)
 - [Biological Background](#biological-background)
 - [How it Works](#how-it-works)
 	- [PseudoCode](#pseudocode)
-- [Motivation / Advantages](#motivation-advantages)
+- [Motivation / Advantages](#why-ga)
 - [Applications](#applications)
 - [Concepts](#concepts)
 	- [Crossing Over](#crossing-over)
 	  - [Methods of selection of Chromosomes](#methods-of-selection-of-chromosomes)
 	- [Mutation](#mutation)
-	- [Fitness Function](#fitness function)
+	- [Fitness Function](#fitness-function)
 	- [Selection](#selection)
 		- [Roulette-Wheel Selection](#roulette-wheel-selection)
 		- [Stochastic Universal Sampling](#stochastic-universal-sampling)
 	- Termination Evaluation Criteria
-- Comparative Study [To be Added Later]
-  - k Nearest Neighbour
-  - Maximum Likelihood Estimation
 - [Bibliography](#bibliography)
 
 
@@ -103,7 +101,7 @@ Algorithm GA:
 end GA
 ```
 
-## Motivation / Advantages
+## Why GA?
 * Modular, separate from application 
 * Supports multi-objective optimization 
 * Good for “noisy” environments 
